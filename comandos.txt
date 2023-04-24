@@ -1,0 +1,16 @@
+-- Para criar a solução
+dotnet new sln --name GalloFlix
+
+-- Para criar o projeto
+dotnet new mvc -f net6.0 -o GalloFlix
+
+-- Para adicionar o projeto a solução
+dotnet sln add GalloFlix\GalloFlix.csproj
+
+-- Instalar pacotes de acesso a dados 
+tecnica imigration: codefirst - criar a classe e baseado nelas faz gerar o banco.. tecnica usada para migrar
+ site NUGET 
+1- entity - Microsoft.EntityFrameworkCore - dotnet add package Microsoft.EntityFrameworkCore --version 6.0.16
+2- entity design - Microsoft.EntityFrameworkCore.Design - dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.16
+3- pomelo - Pomelo.EntityFrameworkCore.MySql - dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.2
+4- frameworkcore - Microsoft.AspNetCore.Identity.EntityFrameworkCore - dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 6.0.16
