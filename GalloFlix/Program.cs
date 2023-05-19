@@ -8,16 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Objetos Auxiliares da Conexão
+// Objetos auxiliares de Conexão
 string conn = builder.Configuration.GetConnectionString("GalloFlix");
 var version = ServerVersion.AutoDetect(conn);
 
-//Serviço de Conexão com banco de dados
+// Serviço de Conexão com banco de dados
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(conn, version)
 );
 
-//Serviço de Gestão de Usuário - Identity
+// Serviço de Gestão de Usuário - Identity
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();

@@ -3,26 +3,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GalloFlix.Models;
 
-[Table ("MovieCommente")]
+[Table("MovieComment")]
 public class MovieComment
 {
     [Key]
-    public int Id {get; set;}
-    
-    [Required]
-    public int MovieId {get; set;}
-    [ForeignKey("MovieId")]
-    public Movie Movie {get; set;}
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
 
     [Required]
-    public string UserId {get; set;}
+    public int MovieId { get; set; }
+    [ForeignKey("MovieId")]
+    public Movie Movie { get; set; } // PROPRIEDADE DE NAVEGAÇÃO
+
+    [Required]
+    public string UserId { get; set; }
     [ForeignKey("UserId")]
-    public AppUser User {get; set;}
+    public AppUser User { get; set; }
 
     [Required]
     [StringLength(1000)]
-    public string ComponentText {get; set;}
+    public string CommentText { get; set; }
 
     [Required]
-    public DateTime CommentDate {get; set;}
-}
+    public DateTime CommentDate { get; set; }
+
+}   

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GalloFlix.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230509150051_criar-banco")]
+    [Migration("20230509145945_criar-banco")]
     partial class criarbanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,7 +85,7 @@ namespace GalloFlix.Migrations
                     b.Property<DateTime>("CommentDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("ComponentText")
+                    b.Property<string>("CommentText")
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
@@ -103,7 +103,7 @@ namespace GalloFlix.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("MovieCommente");
+                    b.ToTable("MovieComment");
                 });
 
             modelBuilder.Entity("GalloFlix.Models.MovieGenre", b =>
@@ -174,22 +174,22 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8604ef71-b870-4954-a3f9-69e3a63c1ba4",
-                            ConcurrencyStamp = "fbeb22b9-e3b2-44d0-9192-0713b2b2182b",
+                            Id = "42e1a6cc-5c24-450c-b1da-05cf5306238c",
+                            ConcurrencyStamp = "5a52fcd3-c476-4d9d-982d-0485fb9f81f9",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "e8602cfa-0049-4f3e-82fa-68f9ad901585",
-                            ConcurrencyStamp = "5fe91ccf-f70d-41f9-b5f7-76e5e37b4c2b",
+                            Id = "e8f02e5a-8403-4f21-ab8d-f78ee22fc46f",
+                            ConcurrencyStamp = "4451ca90-9c31-4b58-8668-bd756c7c0e5c",
                             Name = "Moderador",
                             NormalizedName = "MODERADOR"
                         },
                         new
                         {
-                            Id = "34552418-dfda-439a-881a-dd10c963e601",
-                            ConcurrencyStamp = "b6ea63b4-ce7c-4c7a-b0d2-e661066ded08",
+                            Id = "2184a8d3-d06c-4e95-b787-727c0cb79970",
+                            ConcurrencyStamp = "81dec6aa-0ab5-49b3-81d0-8e4ca82fb173",
                             Name = "Usuário",
                             NormalizedName = "USUÁRIO"
                         });
@@ -215,7 +215,7 @@ namespace GalloFlix.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaim", (string)null);
+                    b.ToTable("RoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
@@ -350,8 +350,8 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "cb91e923-0335-4ba1-9e3c-55ef3eae60ae",
-                            RoleId = "8604ef71-b870-4954-a3f9-69e3a63c1ba4"
+                            UserId = "0ebcba5d-0616-463e-a987-f3354e481702",
+                            RoleId = "42e1a6cc-5c24-450c-b1da-05cf5306238c"
                         });
                 });
 
@@ -395,22 +395,22 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cb91e923-0335-4ba1-9e3c-55ef3eae60ae",
+                            Id = "0ebcba5d-0616-463e-a987-f3354e481702",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65910814-8bc3-4584-b0d5-c308bfefe801",
-                            Email = "liviamariahzaratini@gmail.com",
+                            ConcurrencyStamp = "a893163b-5d1f-4cf0-a952-813c01d98e7c",
+                            Email = "gallojunior@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "LIVIAMARIAHZARATINI@GMAIL.COM",
-                            NormalizedUserName = "LIVIAREBECA",
-                            PasswordHash = "AQAAAAEAACcQAAAAECbtKSG8nu8duJCo29NGgT1QA2U0kaTCVM+aMwg3JotOeNp4kibhZbOM2oE7TD74+Q==",
-                            PhoneNumber = "14998309083",
+                            NormalizedEmail = "GALLOJUNIOR@GMAIL.COM",
+                            NormalizedUserName = "GALLOJUNIOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBhGik+SDPMpeQXx8EsZhJP72H0GxpyEf8a5BB5xtK2EvRoRouNhUf/rGbyYn90FfQ==",
+                            PhoneNumber = "14981544857",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "ac55e6e4-2404-4d02-87b8-26b9c42a0625",
+                            SecurityStamp = "6d8f2535-b238-4e82-aafa-f629830a317c",
                             TwoFactorEnabled = false,
-                            UserName = "LiviaRebeca",
-                            DateOfBirth = new DateTime(2006, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Lívia Rebeca",
+                            UserName = "GalloJunior",
+                            DateOfBirth = new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "José Antonio Gallo Junior",
                             ProfilePicture = "/img/users/avatar.png"
                         });
                 });
