@@ -39,13 +39,26 @@ public class AccountController : Controller
 
     [HttpPost]
     [AllowAnonymous]
-    public IActionResult Login(LoginDto login)
+    public async Task<IActionResult> Login(LoginDto login)
     {
         // Se o model é válido, faz login
         if (ModelState.IsValid)
         {
+            var result = await _signInManager.PasswordSignInAsync(
+                login.Email, login.Password, login.RememberMe, true
+            );
+            if (result.Succeeded)
+            {
+                _logger.LogInformation($"Usuário { login.Email } acessou o sistema");
+                return LocalRedirect(login.ReturnUrl);
+            }
+            if (result.IsLockedOut)
+            {
+                _logger.LogWarning($"Usuário { login.Email } está bloqueado");
+                return RedirectToAction("Lockout");
+            }
+            ModelState.AddModelError("login", "Usuário e/ou Senha Inválidos!!!");
 
-            return LocalRedirect(login.ReturnUrl);
         }
         return View(login);
     }
