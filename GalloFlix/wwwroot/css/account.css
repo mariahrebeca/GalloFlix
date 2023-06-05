@@ -1,0 +1,43 @@
+main {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 400px !important;
+    max-width: 400px !important;
+}
+
+.forgetPassword{
+    text-decoration: none;
+}
+
+.forgetPassword:hover{
+    text-decoration: underline;
+}
+
+.border-text,
+.border-text-register {
+    position: relative;
+    margin-top: 30px;
+    height: 25px;
+    border-top: 1px solid var(--bs-body-color);
+    color: var(--bs-body-color);
+}
+
+.border-text::after,
+.border-text-register::after {
+    content: "Novo por Aqui?";
+    position: absolute;
+    background-color: var(--bs-body-bg);
+    top: -13px;
+    left: 33.5%;
+    padding: 0 10px;
+}
+
+.border-text-register::after {
+    content: "Já possui uma Conta?" !important;
+    left: 28% !important;
+}
