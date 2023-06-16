@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using GalloFlix.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
+using System.Text.Encodings.Web;
 
 namespace GalloFlix.Controllers;
 
@@ -128,9 +129,28 @@ public class AccountController : Controller
                     "ConfirmEmail", "Account", new { userId = userId, code = code},
                     protocol: Request.Scheme
                 );
+                await _userManager.AddToRoleAsync(user, "Usuário");
+
+                await _emailSender.SendEmailAsync(
+                    email: register.Email,
+                    subject: "GalloFliX - Criação de Conta",
+                    htmlMessage: $"Por favor, confirme a criação de sua conta <a  href='{HtmlEncoder.Default.Encoder(callbackUrl)}'>clicando aqui</a>"
+                );
+
+                return RedirectToAction("RegisterConfirmation");
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
         return View(register);
+    }
+
+    [HttpGet]
+    public IActionResult RegisterConfirmation ()
+    {
+        return View();
     }
 
     private bool IsValidEmail(string email)
