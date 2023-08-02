@@ -4,27 +4,25 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GalloFlix.Data;
-
 public class AppDbContext : IdentityDbContext
 {
-
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
 
     public DbSet<AppUser> AppUsers { get; set; }
-    public DbSet<Genre> Genres { get; set; }
+    public DbSet<Genre> Genres { get; set;}
     public DbSet<Movie> Movies { get; set; }
-    public DbSet<MovieComment> MovieComments { get; set; }
+    public DbSet<MovieComment> MovieComments { get; set; } 
     public DbSet<MovieGenre> MovieGenres { get; set; }
-    public DbSet<MovieRating> MovieRatings { get; set; }
+    public DbSet<MovieRating> MovieRating { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnModelCreating(ModelBuilder builder) //void não tem retorno
     {
         base.OnModelCreating(builder);
         AppDbSeed appDbSeed = new(builder);
 
-        // FluentAPI
+        //FluentAPI
         #region Personalização do Identity
         builder.Entity<IdentityUser>(b => {
             b.ToTable("Users");
@@ -54,7 +52,7 @@ public class AppDbContext : IdentityDbContext
             .HasOne(mc => mc.Movie)
             .WithMany(m => m.Comments)
             .HasForeignKey(mc => mc.MovieId);
-        
+
         builder.Entity<MovieComment>()
             .HasOne(mc => mc.User)
             .WithMany(u => u.Comments)
@@ -65,7 +63,7 @@ public class AppDbContext : IdentityDbContext
         // Definição de Chave Primária Composta
         builder.Entity<MovieGenre>().HasKey(
             mg => new { mg.MovieId, mg.GenreId }
-        );     
+        );
 
         builder.Entity<MovieGenre>()
             .HasOne(mg => mg.Movie)
@@ -78,7 +76,7 @@ public class AppDbContext : IdentityDbContext
             .HasForeignKey(mg => mg.GenreId);
         #endregion
 
-        #region Many To Many MovieRating
+        #region Many To Many - MovieRating
         builder.Entity<MovieRating>().HasKey(
             mr => new { mr.MovieId, mr.UserId }
         );
@@ -93,7 +91,5 @@ public class AppDbContext : IdentityDbContext
             .WithMany(u => u.Ratings)
             .HasForeignKey(mr => mr.UserId);
         #endregion
-
     }
-    
 }

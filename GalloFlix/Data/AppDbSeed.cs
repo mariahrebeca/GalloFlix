@@ -8,43 +8,43 @@ public class AppDbSeed
 {
     public AppDbSeed(ModelBuilder builder)
     {
-        #region Populate Roles - Perfis de Usuário
+        #region  Populate Roles - Perfis de Usuário
         List<IdentityRole> roles = new()
         {
             new IdentityRole()
             {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Administrador",
-                NormalizedName = "ADMINISTRADOR"
+               Id = Guid.NewGuid().ToString(),
+               Name = "Administrador",
+               NormalizedName = "ADMINISTRADOR" 
             },
             new IdentityRole()
             {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Moderador",
-                NormalizedName = "MODERADOR"
+               Id = Guid.NewGuid().ToString(),
+               Name = "Moderador",
+               NormalizedName = "MODERADOR" 
             },
             new IdentityRole()
             {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Usuário",
-                NormalizedName = "USUÁRIO"
+               Id = Guid.NewGuid().ToString(),
+               Name = "Usuário",
+               NormalizedName = " USUÁRIO" 
             }
         };
         builder.Entity<IdentityRole>().HasData(roles);
         #endregion
-    
+        
         #region Populate AppUser - Usuários
         List<AppUser> users = new(){
             new AppUser(){
                 Id = Guid.NewGuid().ToString(),
-                Name = "José Antonio Gallo Junior",
-                DateOfBirth = DateTime.Parse("05/08/1981"),
-                Email = "gallojunior@gmail.com",
-                NormalizedEmail = "GALLOJUNIOR@GMAIL.COM",
-                UserName = "GalloJunior",
-                NormalizedUserName = "GALLOJUNIOR",
+                Name = "Seu Nome Completo",
+                DateOfBirth = DateTime.Parse("11/11/2005"),
+                Email = "admin@gmail.com",
+                NormalizedEmail = "ADMIN@GMAIL.COM",
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN",
                 LockoutEnabled = false,
-                PhoneNumber = "14981544857",
+                PhoneNumber = "14912345678",
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 ProfilePicture = "/img/users/avatar.png"
@@ -68,6 +68,5 @@ public class AppDbSeed
         };
         builder.Entity<IdentityUserRole<string>>().HasData(userRoles);
         #endregion
-    }
-
+    }     
 }

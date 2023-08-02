@@ -22,7 +22,7 @@ public class Movie
 
     [Display(Name = "Sinopse")]
     [Required(ErrorMessage = "A Sinopse é obrigatória")]
-    [StringLength(8000, ErrorMessage = "A Sinopse deve possuir no máximo 8000 caracteres")]
+    [StringLength(8000, ErrorMessage = "A Sinopse deve possuir no máximo 5000 caracteres")]
     public string Synopsis { get; set; }
 
     [Column(TypeName = "Year")]
@@ -45,9 +45,8 @@ public class Movie
     [NotMapped]
     [Display(Name = "Duração")]
     public string HourDuration { get {
-        return TimeSpan.FromMinutes(Duration)
-            .ToString(@"%h'h 'mm'min'");
-    }} 
+        return TimeSpan.FromMinutes(Duration) .ToString(@"%h'h 'mm'min'");
+    }}
 
     public ICollection<MovieComment> Comments { get; set; }
     public ICollection<MovieGenre> Genres { get; set; }

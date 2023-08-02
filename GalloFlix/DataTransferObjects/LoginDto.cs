@@ -4,7 +4,7 @@ namespace GalloFlix.DataTransferObjects;
 
 public class LoginDto
 {
-    [Display(Name = "Email ou Nome de Usuário")]
+    [Display(Name = "Email ou nome de Usuário")]
     [Required(ErrorMessage = "Por favor, informe seu email ou nome de usuário")]
     public string Email { get; set; }
 
