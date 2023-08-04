@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GalloFlix.Migrations
 {
-    public partial class criarbanco : Migration
+    public partial class criandobanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -329,20 +329,20 @@ namespace GalloFlix.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2184a8d3-d06c-4e95-b787-727c0cb79970", "81dec6aa-0ab5-49b3-81d0-8e4ca82fb173", "Usuário", "USUÁRIO" },
-                    { "42e1a6cc-5c24-450c-b1da-05cf5306238c", "5a52fcd3-c476-4d9d-982d-0485fb9f81f9", "Administrador", "ADMINISTRADOR" },
-                    { "e8f02e5a-8403-4f21-ab8d-f78ee22fc46f", "4451ca90-9c31-4b58-8668-bd756c7c0e5c", "Moderador", "MODERADOR" }
+                    { "5070ec7a-a911-45e8-9961-e28d4308861b", "4b64a213-1de4-49b3-8bb0-f52a40515d23", "Moderador", "MODERADOR" },
+                    { "6c7d2129-4568-4798-b27f-98cfb2868f07", "ba09f061-b749-4f43-998f-68e79bb5577d", "Usuário", " USUÁRIO" },
+                    { "f53441dc-19fd-48aa-b9e0-3b7fdb378e6b", "b87db884-caa9-4c28-88a1-af7048c56669", "Administrador", "ADMINISTRADOR" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "0ebcba5d-0616-463e-a987-f3354e481702", 0, "a893163b-5d1f-4cf0-a952-813c01d98e7c", new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "AppUser", "gallojunior@gmail.com", true, false, null, "José Antonio Gallo Junior", "GALLOJUNIOR@GMAIL.COM", "GALLOJUNIOR", "AQAAAAEAACcQAAAAEBhGik+SDPMpeQXx8EsZhJP72H0GxpyEf8a5BB5xtK2EvRoRouNhUf/rGbyYn90FfQ==", "14981544857", true, "/img/users/avatar.png", "6d8f2535-b238-4e82-aafa-f629830a317c", false, "GalloJunior" });
+                values: new object[] { "1319a0a5-df0a-4090-8025-cc5d484523a1", 0, "9d403b16-fce4-4243-89c0-46d2829ae240", new DateTime(2005, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "AppUser", "admin@gmail.com", true, false, null, "Seu Nome Completo", "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEDhTPBhrxNiq5yabZ0056nY/n1OMgEbneae5CGn3lYESdfb0aQFwGeB25kF9Pln6tA==", "14912345678", true, "/img/users/avatar.png", "7bf0ffce-1219-4ed6-816e-921d88aa9d8c", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "42e1a6cc-5c24-450c-b1da-05cf5306238c", "0ebcba5d-0616-463e-a987-f3354e481702" });
+                values: new object[] { "f53441dc-19fd-48aa-b9e0-3b7fdb378e6b", "1319a0a5-df0a-4090-8025-cc5d484523a1" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MovieComment_MovieId",
